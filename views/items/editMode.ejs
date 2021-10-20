@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Items</title>
+  </head>
+  <body>
+    <h1><%= initialItem.district %> Malls' Price Comparison</h1>
+    <table style="text-align: center">
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>mall name</th>
+          <th>item name</th>
+          <th>price</th>
+          <th>edit</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% for (let i of items) { %>
+          <form action="/items/<%= category %>/editMode/<%= i._id %>?_method=DELETE" method="POST">
+          <tr>
+            <td><%= i.mallCode %></td>
+            <td><%= i.mallName %></td>
+            <td><a href="/items/<%=i.itemName%>"><%= i.itemName %></a></td>
+            <td><%= i.price %> won</td>
+            <td>
+              <button onclick="alert('Delete the row of <%= i.itemName %>')">
+                x
+              </button>
+              </form>
+              <button onclick="location.href='/items/<%=category%>/edit/<%= i._id %>'">
+                Edit
+              </button>
+            </td>
+          </tr>
+          <% } %>
+        
+      </tbody>
+    </table>
+    <a href="/items/<%=category%>/new">Add items</a>
+    <a href="/items">Back to districts</a>
+    <a href="/<%= category %>">Back</a>
+  </body>
+</html>

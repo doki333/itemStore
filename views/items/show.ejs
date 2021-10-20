@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= itemName %></title>
+  </head>
+  <body>
+    <h1>Price list of <%= itemName %></h1>
+    <table style="text-align: center">
+      <thead>
+        <tr>
+          <th>code</th>
+          <th>mall name</th>
+          <th>item name</th>
+          <th>price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let i of foundItems) { %>
+        <tr>
+          <td><%= i.mallCode %></td>
+          <td><%= i.mallName %></td>
+          <td><%= i.itemName %></td>
+          <td><%= i.price %> won</td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    <a href="/">Back to districts</a>
+  </body>
+</html>

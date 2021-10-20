@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit items</title>
+  </head>
+  <body>
+    <h1>Edit a Item</h1>
+    <h2>For <%= foundItem.district %></h2>
+    <form action="/items/<%= category %>/<%= foundItem._id %>?_method=PUT" method="POST">
+      <label for="category">Category is </label>
+      <input type="text" value="<%= category %>" name="category" readonly />
+      <label for="district">District : </label>
+      <input type="text" value="<%= foundItem.district %>" name="district" readonly  />
+      <br />
+      <br />
+      <label for="mallCode"> mall code</label>
+      <select name="mallCode" id="mallCode">
+        <% for (let v of initialValue) {%>
+        <option value="<%= v.mallCode %>"  <%= foundItem.mallCode === v.mallCode ? 'selected':''  %>><%= v.mallCode %></option>
+        <% } %>
+      </select>
+      <label for="mallName">Mall name: </label>
+      <select name="mallName" id="mallName">
+        <% for (let v of initialValue) {%>
+        <option value="<%= v.mallName %>" <%= foundItem.mallName === v.mallName ? 'selected':''  %> ><%= v.mallName %></option>
+        <% } %>
+      </select>
+      <br />
+      <br />
+      <label for="itemName">Item Name: </label>
+      <input
+        type="String"
+        name="itemName"
+        id="itemName"
+        placeholder="Item Name"
+        value="<%= foundItem.itemName %>"
+      />
+      <label for="price">Price: </label>
+      <input type="Number" name="price" id="price" placeholder="price" value="<%= foundItem.price %>" />
+      <label for="price">won</label>
+      <br />
+      <button>submit</button>
+    </form>
+    <a href="/items/<%= category %>/editMode">Back</a>
+  </body>
+</html>
